@@ -9,11 +9,5 @@ install:
   - curl -sL -o ${HADOLINT} "https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-$(uname -s)-$(uname -m)"
   - chmod 700 ${HADOLINT}
 script:
-  - ${HADOLINT} --ignore DL3003 --ignore DL3008 Dockerfile
+  - ${HADOLINT} --ignore DL3003 --ignore DL3008 --ignore DL3018 Dockerfile
   - docker build . -t varnav/lnd-node
-  - docker run --rm -d --name lnd varnav/lnd-node
-  - sleep 5
-  - docker logs lnd | head -n 20
-  - sleep 15
-  - docker logs --tail 20 lnd
-  - docker stop lnd

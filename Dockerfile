@@ -14,7 +14,7 @@ RUN apk add --no-cache --update alpine-sdk \
 &&  make install tags="signrpc walletrpc chainrpc invoicesrpc routerrpc"
 
 # Start a new, final image to reduce size.
-FROM alpine as final
+FROM alpine:latest as final
 
 # Expose lnd ports (server, rpc).
 EXPOSE 9735 10009
