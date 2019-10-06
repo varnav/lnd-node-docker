@@ -1,4 +1,4 @@
-FROM golang:1.13-alpine as builder
+FROM golang:1-alpine as builder
 
 # Force Go to use the cgo based DNS resolver. This is required to ensure DNS
 # queries required to connect to linked containers succeed.
@@ -14,7 +14,7 @@ RUN apk add --no-cache --update alpine-sdk \
 &&  make install tags="signrpc walletrpc chainrpc invoicesrpc routerrpc"
 
 # Start a new, final image to reduce size.
-FROM alpine:latest as final
+FROM alpine:3 as final
 
 # Expose lnd ports (server, rpc).
 EXPOSE 9735 10009
