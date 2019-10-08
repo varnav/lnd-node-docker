@@ -7,3 +7,7 @@ Run:
 
 Create a wallet: `docker exec -it lnd-testnet lncli create`
 Unlock wallet: `docker exec -it lnd-testnet lncli unlock`
+
+Get admin macaroon (for auth): `docker exec -i lnd-testnet xxd -p /root/.lnd/data/chain/bitcoin/testnet/admin.macaroon`
+Details about macaroons: https://github.com/lightningnetwork/lnd/blob/master/docs/macaroons.md
+
